@@ -1,0 +1,117 @@
+
+/* color-palette */
+/* #f8faf9, #429ea6, #b4654a, #6a3e37, #273e47 */
+/* https://coolors.co/f8faf9-429ea6-b4654a-6a3e37-273e47 */
+
+body {
+  margin: 0;
+  color: #273E47;
+  background-color: #F8FAF9;
+  font-size: 24px;
+}
+
+h1 {
+  font-size: 80px;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 40px;
+  margin-bottom: 1rem;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  margin-bottom: 1rem;
+}
+
+.full-screen-section {
+  height: 95vh;
+  text-align: center;
+  position: relative;
+}
+
+.split-section {
+  display: flex;
+  flex-direction: row;
+  padding-left: 4rem;
+  padding-top: 4rem;
+  text-align: start;
+  top: 0;
+}
+
+.split-section .left {
+  flex-basis: 55%;
+  padding-top: 3rem;
+}
+
+.split-section .right {
+  justify-content: center;
+  flex-basis: 42%;
+  padding: 3rem;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+#hero-right {
+  background: #6A3E37;
+}
+
+#story-right {
+  background: #B4654A;
+  text-align: center;
+}
+
+#story-left {
+  padding-right: 4rem;
+}
+
+#work-right {
+  background: #429EA6;
+}
+
+#contact-right {
+  background: #F8FAF9;
+}
+
+img {
+  width: 18rem;
+}
+
+.card {
+  width: 20rem;
+  height: 10rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card:hover {
+  opacity: 0.5;
+}
+
+.first-main-section {
+  padding-top: 10vh;
+}
+
+.nav-buttons {
+  display: flex;
+  flex-direction: row;
+}
+
+.navbar-custom {
+	background-color: rgb(248, 250, 249);
+}
+
+#project-one-card {
+  position: relative;
+  top: 10rem;
+  left: 2rem;
+}
+
+#project-two-card {
+  position: relative;
+  top: 12rem;
+  left: 5rem;
+  z-index: 5;
+}
