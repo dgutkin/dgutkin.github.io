@@ -1,115 +1,124 @@
 
-// set listeners for scroll behaviour
-window.addEventListener("load", setScrollBehaviour);
-window.addEventListener("scroll", setScrollBehaviour);
-window.addEventListener("resize", setScrollBehaviour);
 
-window.addEventListener("scroll", setMyStoryScroll);
+window.addEventListener(
+    "load",
+    createHeroRightObserver
+)
 
-// add on mouseover show description and button with link for the hero cards
+window.addEventListener(
+    "load",
+    createStoryRightObserver
+)
 
-function setScrollBehaviour() {
+window.addEventListener(
+    "load",
+    createWorkCardObserver
+)
+
+let options = {
+    root: null,
+    rootMargin: "0px",
+    threshold: buildThresholdList()
+};
+
+function createHeroRightObserver() {
     
-  // calculate the percent of height scrolled
-  const htmlElement = document.documentElement;
-  const scrollFactor =
-    htmlElement.scrollTop / htmlElement.clientHeight * 100;
+    heroRight = document.getElementById("hero-right");
+      
+    let observer = new IntersectionObserver(heroRightHandler, options);
+    observer.observe(heroRight);
 
-  setBackgroundOpacity(scrollFactor, document.getElementById("hero-right"));
-  setBackgroundOpacity(scrollFactor, document.getElementById("hero-left"));
+}
 
-  setBackgroundOpacity(scrollFactor - 100, document.getElementById("story-right"));
-  setBackgroundOpacity(scrollFactor - 100, document.getElementById("story-left"));
+function createStoryRightObserver() {
 
-  moveHeroCards(scrollFactor);
+    storyRight = document.getElementById("story-right");
+      
+    let observer = new IntersectionObserver(storyRightHandler, options);
+    
+    observer.observe(storyRight);
 
-  moveStoryRight(scrollFactor - 100);
+}
 
-  if (scrollFactor > 100) {
-    moveProjectOne(scrollFactor);  
+function createWorkCardObserver() {
+
+    workCardOne = document.getElementById("project-one");
+    workCardTwo = document.getElementById("project-two");
+
+    let observer = new IntersectionObserver(workCardHandler, options);
+
+    observer.observe(workCardOne);
+    observer.observe(workCardTwo);
+
+}
+
+function buildThresholdList() {
+
+    let thresholds = [];
+    let numSteps = 20;
+  
+    for (let i = 1.0; i <= numSteps; i++) {
+      let ratio = i / numSteps;
+      thresholds.push(ratio);
+    }
+  
+    thresholds.push(0);
+    return thresholds;
+
   }
-
-}
-
-function setHeroScroll() {
-
-  const element = document.getElementById("hero");
-  const scrollFactor = element.scrollTop / element.clientHeight * 100;
-  console.log(element.scrollTop);
-  // setBackgroundOpacity(scrollFactor, element);
-
-}
-
-function setMyStoryScroll() {
-
-  const myStory = document.getElementById("my-story");
-  const scrollFactor = myStory.scrollTop / myStory.clientHeight * 100;
   
-  setBackgroundOpacity(scrollFactor, myStory);
+function heroRightHandler(entries, observer) {
+
+    entries.forEach( (entry) => {
+        
+        entry.target.style.opacity = entry.intersectionRatio;
+
+        entry.target.style.transform = `translateX(${(1-entry.intersectionRatio) * 50}%)`
+        
+    });
 
 }
 
-function moveHeroCards(scrollFactor) {
-  let moveY = -1 * 3 * scrollFactor;
-  let moveX = 2 * scrollFactor;
-  //document.getElementById("project-one-card").style.transform = `translate(${moveX}%,${moveY}%)`;
-  // document.getElementById("project-one-card").style.transform = `translateX(${moveX}%)`;
+function storyRightHandler(entries, observer) {
 
-  let rotation = moveX % 360;
-  document.getElementById("project-two-card").style.transform = `rotate(${moveX}deg)`;
-  document.getElementById("project-one-card").style.transform = `rotate(${moveX}deg)`;
+    entries.forEach( (entry) => {
+        
+        entry.target.style.opacity = entry.intersectionRatio;
 
-  document.getElementById("hero-right").style.transform = `translateX(${moveX}%)`;
-}
-
-function moveStoryRight(scrollFactor) {
-
-  let moveX = 2 * scrollFactor;
-
-  document.getElementById("story-right").style.transform = `translateX(${moveX}%)`;
+        entry.target.style.transform = `translateX(${(1-entry.intersectionRatio) * 50}%)`
+        
+    });
 
 }
 
-function moveProjectOne(scrollFactor) {
+function workCardHandler(entries, observer) {
 
-  // calculate the X-axis translation (quadratic)
-  let moveX = 1.5 * Math.abs(scrollFactor - 200);
-  //let moveXQ = 1000 + (-0.5 * Math.pow(scrollFactor - 150,2));
+    entries.forEach( (entry) => {
+        
+        entry.target.style.opacity = entry.intersectionRatio;
 
-  // set the X-axis translation for Project One
-  document.getElementById("project-one").style.transform = `translateX(${moveX}%)`;
-
-}
-
-function moveProjectTwo(scrollFactor) {
-
-  // calculate the X-axis translation
-  let moveX = 0 + 1 * 5 * scrollFactor;
-
-  // set the X-axis translation for Project Two
-  document.getElementById("project-two").style.transform = `translateX(${moveX}%)`;
-
-}
-
-function setBackgroundOpacity(scrollFactor, element) {
-  
-  // calculate the opacity based on the scroll factor
-  let opacity = 1 - 0.005 * Math.min(scrollFactor, 30) * 100 / 30;
-  
-  element.style.opacity = opacity;
+        entry.target.style.transform = `translateX(${(1-entry.intersectionRatio) * 40}%)`
+        
+    });
 
 }
 
 function scrollToHome() {
-  window.scrollTo(0, 0);
+
+    // scroll to the top of the page
+    window.scrollTo(0, 0);
+  
 }
-
-function scrollToElement(elementId) {
-
-  const element = document.getElementById(elementId);
-
-  const positionY = window.scrollY + element.getBoundingClientRect().top;
-
-  window.scrollTo(0, positionY);
-
-}
+  
+  function scrollToElement(elementId) {
+  
+    // fetch the element based on the id
+    const element = document.getElementById(elementId);
+  
+    // get the top absolute position of the element
+    const positionY = window.scrollY + element.getBoundingClientRect().top;
+  
+    // scroll to the position
+    window.scrollTo(0, positionY);
+  
+  }

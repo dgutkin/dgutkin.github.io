@@ -90,6 +90,16 @@ img {
   opacity: 0.5;
 }
 
+.circle {
+  border-radius: 50%;
+  background: #F8FAF9;
+  width: 5rem;
+  height: 5rem;
+  line-height: 5rem;
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
 .first-main-section {
   padding-top: 10vh;
 }
@@ -103,15 +113,28 @@ img {
 	background-color: rgb(248, 250, 249);
 }
 
-#project-one-card {
+#story-card {
   position: relative;
-  top: 10rem;
-  left: 2rem;
+  top: 5rem;
+  left: 3rem;
 }
 
-#project-two-card {
+#work-card {
   position: relative;
-  top: 12rem;
-  left: 5rem;
-  z-index: 5;
+  top: 10rem;
+  left: 3rem;
+}
+
+#contact-card {
+  position: relative;
+  top: 15rem;
+  left: 3rem;
+}
+
+#project-one {
+  top: 5rem;
+}
+
+#project-two {
+  top: 10rem;
 }
