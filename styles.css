@@ -90,6 +90,10 @@ img {
   opacity: 0.5;
 }
 
+.card-text {
+  font-size: 0.8rem;
+}
+
 .circle {
   border-radius: 50%;
   background: #F8FAF9;
