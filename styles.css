@@ -56,9 +56,11 @@ li {
 }
 
 #hero-right {
-  background: #6A3E37;
+  background: #F8FAF9;
   text-align: center;
-  color: #F8FAF9;
+  color:  #273E47;
+  padding-top: 20rem;
+  box-shadow: none;
 }
 
 #story-right {

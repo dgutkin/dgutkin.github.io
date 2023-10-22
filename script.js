@@ -1,36 +1,26 @@
 
-
-window.addEventListener(
-    "load",
-    createHeroRightObserver
-)
-
+// window event listeners
 window.addEventListener(
     "load",
     createStoryRightObserver
-)
+);
 
 window.addEventListener(
     "load",
     createWorkCardObserver
-)
+);
 
-animateHeroRight();
+window.addEventListener(
+    "load",
+    animateHandPoint
+);
+
 
 let options = {
     root: null,
     rootMargin: "0px",
     threshold: buildThresholdList()
 };
-
-function createHeroRightObserver() {
-    
-    heroRight = document.getElementById("hero-right");
-      
-    let observer = new IntersectionObserver(heroRightHandler, options);
-    observer.observe(heroRight);
-
-}
 
 function createStoryRightObserver() {
 
@@ -68,18 +58,6 @@ function buildThresholdList() {
     return thresholds;
 
   }
-  
-function heroRightHandler(entries, observer) {
-
-    entries.forEach( (entry) => {
-        
-        entry.target.style.opacity = entry.intersectionRatio;
-
-        entry.target.style.transform = `translateX(${(1-entry.intersectionRatio) * 50}%)`
-        
-    });
-
-}
 
 function storyRightHandler(entries, observer) {
 
@@ -116,7 +94,7 @@ function scrollToHome() {
   
     // fetch the element based on the id
     const element = document.getElementById(elementId);
-  
+    
     // get the top absolute position of the element
     const positionY = window.scrollY + element.getBoundingClientRect().top;
   
@@ -125,35 +103,34 @@ function scrollToHome() {
   
   }
 
-  function animateHeroRight() {
+  function animateHandPoint() {
 
-    let large = false;
-    heroRight = document.getElementById("hero-right");
-    let scaleArr = [0.99, 0.993, 0.996, 1, 1.003]
+    const handPoint = document.getElementById("hand-point");
+    let translateArr = [1, 2, 3, 4, 50]
     let direction = true;
     let counter = 0;
 
+    // loop animation
     setInterval( () => {
         
-        if (counter == scaleArr.length - 1) {
+        // check direction
+        if (counter == translateArr.length - 1) {
             direction = false;
         } else if (counter == 0) {
             direction = true;
         }
+
+        // increment or decrement counter based on direction
         if (direction) {
             counter++;
         } else {
             counter--;
         }
 
-        let scale = scaleArr[counter];
-
-        console.log(large);
-        if (large) {
-            heroRight.style.transform = `scale(${scale})`;
-        } else {
-            heroRight.style.transform = `scale(${scale})`;
-        }
+        let translate = translateArr[counter];
+        
+        handPoint.style.transform = `translateY(${translate}%)`;
+        
     }, 100);
 
   }
