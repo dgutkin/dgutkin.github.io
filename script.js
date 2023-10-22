@@ -15,6 +15,8 @@ window.addEventListener(
     createWorkCardObserver
 )
 
+animateHeroRight();
+
 let options = {
     root: null,
     rootMargin: "0px",
@@ -121,4 +123,37 @@ function scrollToHome() {
     // scroll to the position
     window.scrollTo(0, positionY);
   
+  }
+
+  function animateHeroRight() {
+
+    let large = false;
+    heroRight = document.getElementById("hero-right");
+    let scaleArr = [0.99, 0.993, 0.996, 1, 1.003]
+    let direction = true;
+    let counter = 0;
+
+    setInterval( () => {
+        
+        if (counter == scaleArr.length - 1) {
+            direction = false;
+        } else if (counter == 0) {
+            direction = true;
+        }
+        if (direction) {
+            counter++;
+        } else {
+            counter--;
+        }
+
+        let scale = scaleArr[counter];
+
+        console.log(large);
+        if (large) {
+            heroRight.style.transform = `scale(${scale})`;
+        } else {
+            heroRight.style.transform = `scale(${scale})`;
+        }
+    }, 100);
+
   }
