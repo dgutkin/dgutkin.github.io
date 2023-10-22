@@ -97,7 +97,7 @@ function workCardHandler(entries, observer) {
         
         entry.target.style.opacity = entry.intersectionRatio;
 
-        entry.target.style.transform = `translateX(${(1-entry.intersectionRatio) * 40}%)`
+        entry.target.style.transform = `translateX(${(1-(entry.intersectionRatio)) * 30}%)`
         
     });
 

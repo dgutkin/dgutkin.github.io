@@ -82,8 +82,9 @@ img {
 
 .card {
   width: 20rem;
-  height: 10rem;
+  height: 12rem;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background:  #F8FAF9;
 }
 
 .card:hover {
@@ -92,6 +93,10 @@ img {
 
 .card-text {
   font-size: 0.8rem;
+}
+
+.btn {
+  background:#273E47;
 }
 
 .circle {
@@ -136,9 +141,9 @@ img {
 }
 
 #project-one {
-  top: 5rem;
+  top: 3rem;
 }
 
 #project-two {
-  top: 10rem;
+  top: 6rem;
 }
