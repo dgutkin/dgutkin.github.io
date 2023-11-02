@@ -28,10 +28,14 @@ li {
   margin-bottom: 1rem;
 }
 
+.section-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .full-screen-section {
-  height: 95vh;
-  text-align: center;
   position: relative;
+  flex: 1 95vh;
 }
 
 .split-section {
@@ -75,6 +79,10 @@ li {
 
 #work-right {
   background: #429EA6;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 #contact-right {
@@ -90,10 +98,6 @@ img {
   height: 12rem;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   background:  #F8FAF9;
-}
-
-.card:hover {
-  opacity: 0.5;
 }
 
 .card-text {
@@ -146,9 +150,13 @@ img {
 }
 
 #project-one {
-  top: 3rem;
+  flex-basis: 20%;
 }
 
 #project-two {
-  top: 6rem;
+  flex-basis: 20%;
+}
+
+#project-three {
+  flex-basis: 20%;
 }
